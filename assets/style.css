@@ -2,8 +2,13 @@ body {
     background-image: url(../assets/images/login_background.png);
 }
 
-h1, button {
-    color: white;
+h1 {
+    color: tomato;
+    font-family: 'metalLord';
+    font-size: 90px;
+}
+
+button {
     font-family: 'metalLord';
 }
 
@@ -17,4 +22,7 @@ form {
     src: url(../assets/metal\ lord.ttf);
     font-weight: normal;
     font-style: normal;
+}
+#searchbtn {
+    color: tomato;
 }
