@@ -2,10 +2,14 @@ body {
     background-image: url(../assets/images/login_background.png);
 }
 
-h1, form {
-    font-family: monospace;
+h1, button {
     color: white;
     font-family: 'metalLord';
+}
+
+form {
+    color: white;
+    font-family: monospace;
 }
 
 @font-face {
