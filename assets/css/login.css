@@ -1,5 +1,5 @@
 body {
-    background-image: url(../assets/images/login_background.png);
+    background-image: url(../images/backgroundimage.png);
 }
 
 h1 {
@@ -19,7 +19,7 @@ form {
 
 @font-face {
     font-family: 'metalLord';
-    src: url(../assets/metal\ lord.ttf);
+    src: url(../fonts/metal\ lord.ttf);
     font-weight: normal;
     font-style: normal;
 }
