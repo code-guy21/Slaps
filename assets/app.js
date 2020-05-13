@@ -29,3 +29,19 @@ $.ajax({
 }).then((response) => {
   console.log(response);
 });
+
+// Ticket Master 
+
+$.ajax({
+  url:
+    "https://app.ticketmaster.com/discovery/v2/events.json?",
+  method: "GET",
+  dataType: "json",
+  data: {
+    apikey: "AMlA6dh5sfwIqUjSn26jTvgrF6xaX92f",
+    keyword: "metallica",
+    
+  },
+}).then((response) => {
+  console.log(response);
+});
