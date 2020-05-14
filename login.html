@@ -19,10 +19,10 @@
       <form>
         <div class="form-group">
           <label class="m-3">Search a song or artist</label>
-          <input class="form-control text-center" placeholder="For Whom the Bell Tolls">
+          <input class="form-control text-center" id="searched" placeholder="For Whom the Bell Tolls">
           <br>
-          <a href="index.html"><button type="button" class="btn btn-outline-danger m-2">Song</button></a>
-          <a href="index.html"><button type="button" class="btn btn-outline-danger m-2">Artist</button></a>
+          <a href="index.html"><button type="button" id="searchBtn" class="btn btn-outline-danger m-2">Song</button></a>
+          <a href="index.html"><button type="button" id="searchBtn" class="btn btn-outline-danger m-2">Artist</button></a>
         </div>
 
     </div>
@@ -31,6 +31,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"></script>
+
+    <script>
+      $("#searchBtn").on("click", function(){
+        let songSearched = $("#searched").val();
+        localStorage.setItem("songName", songSearched)
+      })
+    </script>
 </body>
 
 </html>
