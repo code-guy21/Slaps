@@ -1,7 +1,8 @@
 $(document).ready(function () {
-  const dirtySearch = window.location.search
-  console.log(dirtySearch)
-  const cleanSearch = dirtySearch.split('=')[1]
+  const dirtySearch = window.location.search;
+  console.log(dirtySearch);
+  const cleanSearch = dirtySearch.split("=")[1];
+
   //Youtube API
   $.ajax({
     type: "GET",
@@ -20,17 +21,17 @@ $(document).ready(function () {
     // 3. This function creates an <iframe> (and YouTube player)
     //    after the API code downloads.
     var player;
-    onYouTubeIframeAPIReady()
+    onYouTubeIframeAPIReady();
     function onYouTubeIframeAPIReady() {
-      console.log("in the youtube ready callback")
-      player = new YT.Player('player', {
-        height: '390',
-        width: '640',
+      console.log("in the youtube ready callback");
+      player = new YT.Player("player", {
+        height: "390",
+        width: "640",
         videoId: response.items[0].id.videoId,
         events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
-        }
+          onReady: onPlayerReady,
+          onStateChange: onPlayerStateChange,
+        },
       });
     }
 
@@ -52,18 +53,15 @@ $(document).ready(function () {
     function stopVideo() {
       player.stopVideo();
     }
+
+    //write a function to show 10 video results from youtube API on
+
+    //write a function to show video results from youtube API
+    // function displayvideo() {
+    //   let searchResulsts = localStorage.getItem('songName')
+
+    // }
   });
-
-  //write a function to show 10 video results from youtube API on 
-
-  //write a function to show video results from youtube API
-  // function displayvideo() {
-  //   let searchResulsts = localStorage.getItem('songName')
-
-
-  // }
-
-  //to play video go to youtube.com/watch?v=<videoid>
 
   //MusixMatch API
   $.ajax({
@@ -79,19 +77,45 @@ $(document).ready(function () {
     console.log(response);
   });
 
-  // Ticket Master 
+  function concertDetails() {
+    let searchResults = localStorage.getItem("songName");
 
-  $.ajax({
-    url:
-      "https://app.ticketmaster.com/discovery/v2/events.json?",
-    method: "GET",
-    dataType: "json",
-    data: {
-      apikey: "AMlA6dh5sfwIqUjSn26jTvgrF6xaX92f",
-      keyword: cleanSearch,
+    // Ticket Master
 
-    },
-  }).then((response) => {
-    console.log(response);
-  });
-})
+    $.ajax({
+      url: "https://app.ticketmaster.com/discovery/v2/events.json?",
+      method: "GET",
+      dataType: "json",
+      data: {
+        apikey: "AMlA6dh5sfwIqUjSn26jTvgrF6xaX92f",
+        keyword: searchResults,
+      },
+    }).then((response) => {
+      console.log(response);
+    });
+  }
+
+  concertDetails();
+
+  //Fetch Lyrics
+
+  function fetchLyrics(song, artist) {
+    $.ajax({
+      url:
+        "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/matcher.lyrics.get",
+      method: "GET",
+      dataType: "json",
+      data: {
+        apikey: "288eca28787dff862dc30619eec1d852",
+        q_track: song,
+        q_artist: artist,
+      },
+    }).then(function (response) {
+      processLyrics(response.message.body.lyrics.lyrics_body);
+    });
+  }
+
+  const processLyrics = (lyrics) => {
+    console.log(lyrics);
+  };
+});
