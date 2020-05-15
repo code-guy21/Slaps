@@ -23,9 +23,8 @@
           <label class="m-3">Search a song or artist</label>
           <input class="form-control text-center" id="searched" placeholder="For Whom the Bell Tolls">
           <br>
-          <a href="index.html"><button type="button" id="searchBtn" class="btn btn-outline-danger m-2">Song</button></a>
-          <a href="index.html"><button type="button" id="searchBtn"
-              class="btn btn-outline-danger m-2">Artist</button></a>
+          <button type="button" id="searchBtn" class="btn btn-outline-danger m-2 search">Song</button>
+          <button type="button" id="searchBtn2" class="btn btn-outline-danger m-2 search">Artist</button>
         </div>
 
     </div>
@@ -34,9 +33,12 @@
       crossorigin="anonymous"></script>
 
     <script>
-      $("#searchBtn").on("click", function () {
+      $(".search").on("click", function (event) {
+        event.preventDefault()
         let songSearched = $("#searched").val();
         localStorage.setItem("songName", songSearched)
+        location.assign("/C:/Users/tfi10/Desktop/repos/Slaps/main.html?search=" + songSearched)
+        //location.assign("/main.html?search=" + songSearched)
       })
     </script>
 </body>
