@@ -36,10 +36,9 @@
       crossorigin="anonymous"></script>
 
     <script>
-      $(".searchBtn").on("click", function (event) {
+      $("#searchBtn").on("click", function (event) {
         event.preventDefault()
         let songSearched = $("#searched").val();
-        console.log(songSearched)
         localStorage.setItem("songName", songSearched)
         //location.assign("/C:/Users/tfi10/Desktop/repos/Slaps/main.html?search=" + songSearched)
         //location.assign("/main.html?search=" + songSearched)
