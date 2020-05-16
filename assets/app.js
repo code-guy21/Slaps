@@ -96,7 +96,27 @@ $(document).ready(function () {
         keyword: searchResults,
       },
     }).then((response) => {
-      console.log(response);
+      let concerts = response._embedded.events
+
+      for (let i = 0; i < 5; i++) {
+
+        let imgDiv = $('<div class="col-2 m-4">')
+
+        let eventTitle = $('<p id="eventTitle">').text(concerts[i].name)
+        let eventDate = $('<p id="eventDate">').text(concerts[i].dates.start.localDate)
+        let concertsImage = $("<img id='eventImage'>")
+
+        concertsImage.attr('src', concerts[i].images[5].url)
+
+        imgDiv.append(eventTitle);
+        imgDiv.append(eventDate)
+        imgDiv.append(concertsImage)
+
+        console.log(imgDiv)
+
+        $('#eventDisplay').append(imgDiv)
+
+      }    
     });
   }
 
