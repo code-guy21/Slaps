@@ -1,8 +1,12 @@
 $(document).ready(function () {
-  
-  const dirtySearch = window.location.search;
-  console.log(dirtySearch);
-  const cleanSearch = dirtySearch.split("=")[1];
+  let dirtySearch = window.location.search;
+  const urlParams = new URLSearchParams(dirtySearch)
+  console.log(urlParams.get("artistName"));
+  let artist = urlParams.get("artistName")
+  let song = urlParams.get("songName")
+  console.log(artist)
+  console.log(song)
+  //const cleanSearch = dirtySearch.split("=")[1];
 
   //Youtube API
   $.ajax({
@@ -10,7 +14,7 @@ $(document).ready(function () {
     url: "https://www.googleapis.com/youtube/v3/search",
     data: {
       key: "AIzaSyCFonS58Mi9FXxIvqe0p4YY1Rf8HVhcAIg",
-      q: cleanSearch,
+      q: song,
       part: "snippet",
       maxResults: 10,
       type: "video",
@@ -72,7 +76,7 @@ $(document).ready(function () {
     dataType: "json",
     data: {
       apikey: "288eca28787dff862dc30619eec1d852",
-      q_artist: cleanSearch,
+      q_artist: "",
     },
   }).then((response) => {
     // console.log(response);
@@ -150,4 +154,5 @@ $(document).ready(function () {
   const processLyrics = (lyrics) => {
     // console.log(lyrics);
   };
+  fetchLyrics(song, artist)
 });
