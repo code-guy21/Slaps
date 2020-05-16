@@ -103,11 +103,13 @@ $(document).ready(function () {
 
       let concerts = response._embedded.events
 
-      for (let i = 0; i < 1; i++) {
+      for (let i = 0; i < 5; i++) {
 
-        let eventTitle = concerts[i].name
-        let imgDiv = $('<div>')
-        let concertsImage = $("<img>")
+        let imgDiv = $('<div class="col-2 m-4">')
+
+        let eventTitle = $('<p id="eventTitle">').text(concerts[i].name)
+        let concertsImage = $("<img id='eventImage'>")
+
         concertsImage.attr('src', concerts[i].images[5].url)
 
         imgDiv.append(eventTitle);
@@ -119,11 +121,8 @@ $(document).ready(function () {
 
       }
 
-
-      
-      
-
     });
+
   }
 
   concertDetails();

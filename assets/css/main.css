@@ -59,3 +59,15 @@ body{
     position: absolute;
     bottom: 0em;
 }
+
+
+
+#eventTitle {
+    font-family: monospace;
+    font-size: 20px;
+}
+
+#eventImage {
+    width: 305px;
+    height: 225px;
+}
