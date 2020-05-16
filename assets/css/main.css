@@ -62,9 +62,10 @@ body{
 
 
 
-#eventTitle {
+#eventTitle, #eventDate {
     font-family: monospace;
     font-size: 20px;
+    text-align: center;
 }
 
 #eventImage {
