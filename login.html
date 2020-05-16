@@ -25,11 +25,13 @@
           <label class="m-3">Search a song or artist</label>
           <input class="form-control text-center" id="searched" placeholder="For Whom the Bell Tolls">
           <br>
-          <button type="button" id="searchBtn" class="btn btn-outline-danger m-2 search">Song</button>
-          <button type="button" id="searchBtn2" class="btn btn-outline-danger m-2 search">Artist</button>
+          <button type="button" id="songBtn" class="btn btn-outline-danger m-2 search">Song</button>
+          <button type="button" id="artistBtn" class="btn btn-outline-danger m-2 search">Artist</button>
 
         </div>
         </form>
+
+        <div id="choices"></div>
     </div>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
@@ -44,6 +46,7 @@
         location.assign("./main.html?search=" + songSearched)
       })
     </script>
+    <script src="./assets/login.js"></script>
 </body>
 
 </html>
