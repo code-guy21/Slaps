@@ -1,7 +1,11 @@
 $(document).ready(function () {
   let dirtySearch = window.location.search;
-  dirtySearch = dirtySearch.replace("%20"," ")
-  console.log(dirtySearch);
+  const urlParams = new URLSearchParams(dirtySearch)
+  console.log(urlParams.get("artistName"));
+  let artist = urlParams.get("artistName")
+  let song = urlParams.get("songName")
+  console.log(artist)
+  console.log(song)
   //const cleanSearch = dirtySearch.split("=")[1];
 
   //Youtube API
@@ -10,7 +14,7 @@ $(document).ready(function () {
     url: "https://www.googleapis.com/youtube/v3/search",
     data: {
       key: "AIzaSyCFonS58Mi9FXxIvqe0p4YY1Rf8HVhcAIg",
-      q: "",
+      q: song,
       part: "snippet",
       maxResults: 10,
       type: "video",
@@ -119,4 +123,5 @@ $(document).ready(function () {
   const processLyrics = (lyrics) => {
     console.log(lyrics);
   };
+  fetchLyrics(song, artist)
 });
