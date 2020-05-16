@@ -83,16 +83,3 @@ body{
     position: absolute;
     bottom: 0em;
 }
-
-
-
-#eventTitle, #eventDate {
-    font-family: monospace;
-    font-size: 20px;
-    text-align: center;
-}
-
-#eventImage {
-    width: 305px;
-    height: 225px;
-}

@@ -21,7 +21,7 @@ $(document).ready(function () {
       videoEmbeddable: true,
     },
   }).then((response) => {
-    // console.log(response);
+    console.log(response);
 
     // 3. This function creates an <iframe> (and YouTube player)
     //    after the API code downloads.
@@ -79,16 +79,14 @@ $(document).ready(function () {
       q_artist: "",
     },
   }).then((response) => {
-    // console.log(response);
+    console.log(response);
   });
-  
 
-
-  // Ticket Master ----------
   function concertDetails() {
     let searchResults = localStorage.getItem("songName");
 
-    
+    // Ticket Master
+
     $.ajax({
       url: "https://app.ticketmaster.com/discovery/v2/events.json?",
       method: "GET",
@@ -97,38 +95,9 @@ $(document).ready(function () {
         apikey: "AMlA6dh5sfwIqUjSn26jTvgrF6xaX92f",
         keyword: searchResults,
       },
-
-
     }).then((response) => {
-
-      console.log(response)
-      
-      // $('#events').text(searchResults + ' Concerts!')
-
-      let concerts = response._embedded.events
-
-      for (let i = 0; i < 5; i++) {
-
-        let imgDiv = $('<div class="col-2 m-4">')
-
-        let eventTitle = $('<p id="eventTitle">').text(concerts[i].name)
-        let eventDate = $('<p id="eventDate">').text(concerts[i].dates.start.localDate)
-        let concertsImage = $("<img id='eventImage'>")
-
-        concertsImage.attr('src', concerts[i].images[5].url)
-
-        imgDiv.append(eventTitle);
-        imgDiv.append(eventDate)
-        imgDiv.append(concertsImage)
-
-        console.log(imgDiv)
-
-        $('#eventDisplay').append(imgDiv)
-
-      }
-
+      console.log(response);
     });
-
   }
 
   concertDetails();
@@ -152,7 +121,7 @@ $(document).ready(function () {
   }
 
   const processLyrics = (lyrics) => {
-    // console.log(lyrics);
+    console.log(lyrics);
   };
   fetchLyrics(song, artist)
 });
