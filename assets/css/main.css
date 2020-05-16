@@ -4,9 +4,16 @@
     font-weight: normal;
     font-style: normal;
 }    
+
 body{
     background-image: url(../images/backgroundimage.png);
 }
+
+.navbar{
+    margin-left: 10px;
+    margin-right: 650px;
+}
+
 .wrapper{
     margin-top: 10px;
     margin-left: 20px;
@@ -17,6 +24,7 @@ body{
     grid-auto-rows: minmax(100px, auto);
     grid-gap: 1em;
 }
+
 .box{
     background-color: #C0D8EE;
     color: #fff;
@@ -45,10 +53,26 @@ body{
 }
 
 .header{
+    display: grid;
     position: absolute;
     top: 0em;
     background-color: #EB3C34;
     width: 100%;
+    height: 75px;
+    grid-template-columns: 2fr 1fr;
+}
+
+.search{
+    margin-top: 15px;
+    margin-left: 20px;
+    margin-right: 15px;
+    grid-column: 1 / 2;
+}
+
+.searchbtn{
+    margin-top: 10px;
+    margin-right: 650px;
+    grid-column: 2 ;
 }
 
 .footer{
