@@ -34,7 +34,8 @@ $(document).ready(function(){
     function displayResults(tracks){
         tracks.forEach(element => {
             let song = $("<div>")
-            song.attr({songName: element.track.track_name, artistName: element.track.artist_name})
+            song.attr({songName: element.track.track_name, artistName: element.track.artist_name, class: "track"})
+
             song.css("color", "white")
             song.text(element.track.track_name)
             $("#choices").append(song)
@@ -45,4 +46,13 @@ $(document).ready(function(){
         //}
         
     }  
+    $(document).on("click", ".track", function(){
+        let song = $(this)
+        let name = song.attr("songName")
+        let artist = song.attr("artistName")
+        console.log(name)
+        console.log(artist)
+        location.assign("./main.html?artistName=" + artist + "&songName=" + name)
+        
+    })
 })
