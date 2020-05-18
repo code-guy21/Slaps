@@ -22,7 +22,7 @@ $(document).ready(function () {
 
   function displayResults(tracks) {
     tracks.forEach((element) => {
-      let song = $("<div>");
+      let song = $("<div id='trackListing'>");
       song.attr({
         songName: element.track.track_name,
         artistName: element.track.artist_name,
@@ -30,18 +30,21 @@ $(document).ready(function () {
       });
 
       song.css("color", "white");
-      song.text(element.track.track_name);
+      song.text(element.track.track_name + ' - ' + element.track.artist_name);
       $("#choices").append(song);
+      $("#searched").val('')
       console.log(element);
     });
   }
   $("#songBtn").on("click", function () {
     let songSearched = $("#searched").val().trim();
     fetchResults({ q_track: songSearched });
+    $("#choices").html('')
   });
   $("#artistBtn").on("click", function () {
     let artistSearched = $("#searched").val().trim();
     fetchResults({ q_artist: artistSearched });
+    $("#choices").html('')
   });
 
   $(document).on("click", ".track", function () {
