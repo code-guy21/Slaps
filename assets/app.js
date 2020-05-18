@@ -86,7 +86,7 @@ $(document).ready(function () {
         );
         let concertsImage = $("<img id='eventImage'>");
 
-        concertsImage.attr("src", concerts[i].images[5].url);
+        concertsImage.attr({"src": concerts[i].images[5].url, id: "imgSize"});
 
         imgDiv.append(eventTitle);
         imgDiv.append(eventDate);

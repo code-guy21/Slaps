@@ -102,3 +102,15 @@ body {
   overflow-x: auto;
   font-size: 25px;
 }
+#copyright {
+  position: relative;
+  width: 100%;
+}
+#imgSize {
+  width: 200px;
+  position: relative;
+  bottom: 40px;
+  display: inline;
+  padding-top: 30px;
+}
+
