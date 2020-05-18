@@ -1,96 +1,104 @@
 @font-face {
-    font-family: 'metalLord';
-    src: url(../fonts/metal\ lord.ttf);
-    font-weight: normal;
-    font-style: normal;
-}    
-
-body{
-    background-image: url(../images/backgroundimage.png);
+  font-family: "metalLord";
+  src: url(../fonts/metal_lord.ttf);
+  font-weight: normal;
+  font-style: normal;
 }
 
-.navbar{
-    margin-left: 10px;
-    margin-right: 650px;
+body {
+  background-image: url(../images/backgroundimage.png);
 }
 
-.wrapper{
-    margin-top: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: 2fr 1fr;
-    grid-auto-rows: minmax(100px, auto);
-    grid-gap: 1em;
+.navbar {
+  margin-left: 10px;
+  margin-right: 650px;
 }
 
-.box{
-    background-color: #C0D8EE;
-    color: #fff;
-    border-radius: 5px;
-    padding: 20px;
-    font-size: 200%;
-    text-align: center;
+.wrapper {
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 2fr 1fr;
+  grid-auto-rows: minmax(100px, auto);
+  grid-gap: 1em;
 }
 
-.a{
-    grid-row: 2 / 6;
-    grid-column: 1 / 2;
+.box {
+  background-color: #c0d8ee;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 200%;
+  text-align: center;
 }
 
-.b{
-    grid-row: 2 / 6;
+.a {
+  grid-row: 2 / 6;
+  grid-column: 1 / 2;
 }
 
-.c{
-    grid-column: 1 / 3;
-    grid-row: 6 / 8;
+.b {
+  grid-row: 2 / 6;
 }
 
-.d{
-    grid-row: 7 / 9;
+.c {
+  grid-column: 1 / 3;
+  grid-row: 6 / 8;
 }
 
-.header{
-    display: grid;
-    position: absolute;
-    top: 0em;
-    background-color: #EB3C34;
-    width: 100%;
-    height: 75px;
-    grid-template-columns: 2fr 1fr;
+.d {
+  grid-row: 7 / 9;
 }
 
-.search{
-    margin-top: 15px;
-    margin-left: 20px;
-    margin-right: 15px;
-    grid-column: 1 / 2;
+.header {
+  display: grid;
+  position: absolute;
+  top: 0em;
+  background-color: #eb3c34;
+  width: 100%;
+  height: 75px;
+  grid-template-columns: 2fr 1fr;
 }
 
-.searchbtn{
-    margin-top: 10px;
-    margin-right: 650px;
-    grid-column: 2 ;
+.search {
+  margin-top: 15px;
+  margin-left: 20px;
+  margin-right: 15px;
+  grid-column: 1 / 2;
 }
 
-.footer{
-    font-family: 'metalLord';
-    text-align: center;
-    background-color: #EB3C34;
-    width: 100%;
-    position: absolute;
-    bottom: 0em;
+.searchbtn {
+  margin-top: 10px;
+  margin-right: 650px;
+  grid-column: 2;
 }
 
-#eventTitle, #eventDate {
-    font-family: monospace;
-    font-size: 20px;
-    text-align: center;
+.footer {
+  font-family: "metalLord";
+  text-align: center;
+  background-color: #eb3c34;
+  width: 100%;
+  position: absolute;
+  bottom: 0em;
+}
+
+#eventTitle,
+#eventDate {
+  font-family: monospace;
+  font-size: 20px;
+  text-align: center;
 }
 
 #eventImage {
-    width: 305px;
-    height: 225px;
+  width: 305px;
+  height: 225px;
+}
+
+#lyrics {
+  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: auto;
+  font-size: 25px;
 }

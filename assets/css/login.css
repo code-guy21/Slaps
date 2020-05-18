@@ -1,28 +1,28 @@
 body {
-    background-image: url(../images/backgroundimage.png);
+  background-image: url(../images/backgroundimage.png);
 }
 
 h1 {
-    color: tomato;
-    font-family: 'metalLord';
-    font-size: 90px;
+  color: tomato;
+  font-family: "metalLord";
+  font-size: 90px;
 }
 
 button {
-    font-family: 'metalLord';
+  font-family: "metalLord";
 }
 
 form {
-    color: white;
-    font-family: monospace;
+  color: white;
+  font-family: monospace;
 }
 
 @font-face {
-    font-family: 'metalLord';
-    src: url(../fonts/metal\ lord.ttf);
-    font-weight: normal;
-    font-style: normal;
+  font-family: "metalLord";
+  src: url(../fonts/metal_lord.ttf);
+  font-weight: normal;
+  font-style: normal;
 }
 #searchbtn {
-    color: tomato;
+  color: tomato;
 }
