@@ -1,12 +1,8 @@
 $(document).ready(function () {
   let dirtySearch = window.location.search;
-  const urlParams = new URLSearchParams(dirtySearch)
-  console.log(urlParams.get("artistName"));
-  let artist = urlParams.get("artistName")
-  let song = urlParams.get("songName")
-  console.log(artist)
-  console.log(song)
-  //const cleanSearch = dirtySearch.split("=")[1];
+  const urlParams = new URLSearchParams(dirtySearch);
+  let artist = urlParams.get("artistName");
+  let song = urlParams.get("songName");
 
   //Youtube API
   $.ajax({
@@ -68,55 +64,38 @@ $(document).ready(function () {
     // }
   });
 
-  //MusixMatch API
-  $.ajax({
-    url:
-      "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/artist.search",
-    method: "GET",
-    dataType: "json",
-    data: {
-      apikey: "288eca28787dff862dc30619eec1d852",
-      q_artist: "",
-    },
-  }).then((response) => {
-    console.log(response);
-  });
-
+  // Ticket Master
   function concertDetails() {
-    let searchResults = localStorage.getItem("songName");
-
-    // Ticket Master
-
     $.ajax({
       url: "https://app.ticketmaster.com/discovery/v2/events.json?",
       method: "GET",
       dataType: "json",
       data: {
         apikey: "AMlA6dh5sfwIqUjSn26jTvgrF6xaX92f",
-        keyword: searchResults,
+        keyword: artist,
       },
     }).then((response) => {
-      let concerts = response._embedded.events
+      let concerts = response._embedded.events;
 
       for (let i = 0; i < 5; i++) {
+        let imgDiv = $('<div class="col-2 m-4">');
 
-        let imgDiv = $('<div class="col-2 m-4">')
+        let eventTitle = $('<p id="eventTitle">').text(concerts[i].name);
+        let eventDate = $('<p id="eventDate">').text(
+          concerts[i].dates.start.localDate
+        );
+        let concertsImage = $("<img id='eventImage'>");
 
-        let eventTitle = $('<p id="eventTitle">').text(concerts[i].name)
-        let eventDate = $('<p id="eventDate">').text(concerts[i].dates.start.localDate)
-        let concertsImage = $("<img id='eventImage'>")
-
-        concertsImage.attr('src', concerts[i].images[5].url)
+        concertsImage.attr("src", concerts[i].images[5].url);
 
         imgDiv.append(eventTitle);
-        imgDiv.append(eventDate)
-        imgDiv.append(concertsImage)
+        imgDiv.append(eventDate);
+        imgDiv.append(concertsImage);
 
-        console.log(imgDiv)
+        console.log(imgDiv);
 
-        $('#eventDisplay').append(imgDiv)
-
-      }    
+        $("#eventDisplay").append(imgDiv);
+      }
     });
   }
 
@@ -141,7 +120,9 @@ $(document).ready(function () {
   }
 
   const processLyrics = (lyrics) => {
-    console.log(lyrics);
+    $("#lyrics").css("height", $(".a").css("height"));
+    $("#lyrics").text(lyrics.split("...")[0]);
   };
-  fetchLyrics(song, artist)
+
+  fetchLyrics(song, artist);
 });
