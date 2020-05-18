@@ -26,3 +26,18 @@ form {
 #searchbtn {
   color: tomato;
 }
+
+#choices {
+  margin-top: 30px;
+}
+
+#trackListing {
+  font-family: monospace;
+  font-size: 20px;
+}
+
+#trackListing:hover {
+  text-decoration: underline;
+  opacity: 70%;
+  cursor: pointer;
+}
