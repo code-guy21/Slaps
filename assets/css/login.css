@@ -2,6 +2,14 @@ body {
   background-image: url(../images/backgroundimage.png);
 }
 
+#mainLogo {
+  margin-top: 15px;
+}
+
+hr {
+  color: white;
+}
+
 h1 {
   color: tomato;
   font-family: "metalLord";
@@ -34,6 +42,7 @@ form {
 #trackListing {
   font-family: monospace;
   font-size: 20px;
+  margin-bottom: 10px;
 }
 
 #trackListing:hover {
