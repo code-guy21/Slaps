@@ -1,20 +1,38 @@
 $(document).ready(function () {
   let dirtySearch = window.location.search;
-  const urlParams = new URLSearchParams(dirtySearch)
+  const urlParams = new URLSearchParams(dirtySearch);
+  console.log(urlParams);
   console.log(urlParams.get("artistName"));
-  let artist = urlParams.get("artistName")
-  let song = urlParams.get("songName")
-  console.log(artist)
-  console.log(song)
+  let artist = urlParams.get("artistName");
+  let song = urlParams.get("songName");
+  let token = location.hash.substring(1).split("&")[0].split("=")[1];
+  console.log(artist);
+  console.log(song);
+  console.log(token);
   //const cleanSearch = dirtySearch.split("=")[1];
-
+  getSong();
+  function getSong() {
+    $.ajax({
+      type: "GET",
+      url: "https://api.spotify.com/v1/search",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+      data: {
+        q: "metallica",
+        type: "artist",
+      },
+    }).then(function (resp) {
+      console.log(resp);
+    });
+  }
   //Youtube API
   $.ajax({
     type: "GET",
     url: "https://www.googleapis.com/youtube/v3/search",
     data: {
       key: "AIzaSyCFonS58Mi9FXxIvqe0p4YY1Rf8HVhcAIg",
-      q: song,
+      q: artist + song,
       part: "snippet",
       maxResults: 10,
       type: "video",
@@ -105,23 +123,17 @@ $(document).ready(function () {
   //Fetch Lyrics
 
   function fetchLyrics(song, artist) {
-    $.ajax({
-      url:
-        "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/matcher.lyrics.get",
-      method: "GET",
-      dataType: "json",
-      data: {
-        apikey: "288eca28787dff862dc30619eec1d852",
-        q_track: song,
-        q_artist: artist,
-      },
-    }).then(function (response) {
-      processLyrics(response.message.body.lyrics.lyrics_body);
-    });
+    base_url = "https://accounts.spotify.com/authorize?";
+    client_id = "client_id=7c62586e78b4439e82cba40ac1d1fc4f&";
+    redirect_uri =
+      "redirect_uri=" +
+      "file:///Users/alexis/Software/Bootcamp/Slaps/login.html" +
+      "&";
+    response_type = "response_type=token";
+    window.location = base_url + client_id + redirect_uri + response_type;
   }
 
   const processLyrics = (lyrics) => {
     console.log(lyrics);
   };
-  fetchLyrics(song, artist)
 });
