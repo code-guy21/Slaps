@@ -30,7 +30,7 @@ $(document).ready(function () {
       });
 
       song.css("color", "white");
-      song.text(element.track.track_name);
+      song.text(element.track.track_name + ' - ' + element.track.artist_name);
       $("#choices").append(song);
       console.log(element);
     });
