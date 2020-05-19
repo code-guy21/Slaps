@@ -87,7 +87,7 @@ $(document).ready(function () {
         let eventDate = $('<p id="eventDate">').text(concerts[i].dates.start.localDate);
         let concertsImage = $("<img id='eventImage'>");
 
-        concertsImage.attr({"src": concerts[i].images[5].url, class: "imgSize", 'data-url': concerts[i].url});
+        concertsImage.attr({"src": concerts[i].images[5].url, id: "concertImg", class: "imgSize", 'data-url': concerts[i].url});
         imgDiv.append(eventTitle);
         imgDiv.append(eventDate);
         imgDiv.append(concertsImage);
