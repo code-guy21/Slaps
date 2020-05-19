@@ -62,6 +62,7 @@ $(document).ready(function () {
 
       concertsImage.attr({
         src: concert.images[5].url,
+        id: "concertImg",
         class: "imgSize",
         "data-url": concert.url,
       });

@@ -97,9 +97,8 @@ body {
   position: relative;
   width: 100%;
 }
-.imgSize {
-  width: 200px;
-  position: relative;
+#concertImg {
+  height: 160px;
   bottom: 40px;
   display: inline;
   padding-top: 30px;
@@ -163,4 +162,7 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+#homeBtn {
+  
 }
