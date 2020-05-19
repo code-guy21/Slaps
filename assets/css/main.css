@@ -86,7 +86,8 @@ body {
 
 #eventTitle,
 #eventDate {
-  line-height: 1.5em;
+  margin-left: 70px;
+  line-height: 1em;
   height: 3em;       /* height is 2x line-height, so two lines will display */
   overflow: hidden;
   font-family: monospace;

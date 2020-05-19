@@ -106,7 +106,7 @@ $(document).ready(function () {
 
         window.open(eventUrl, '_blank')
       })
-      
+
 
   concertDetails();
 
