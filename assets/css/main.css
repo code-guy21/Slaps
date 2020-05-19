@@ -73,6 +73,10 @@ body {
 
 #eventTitle,
 #eventDate {
+  margin-left: 70px;
+  line-height: 1em;
+  height: 3em;       /* height is 2x line-height, so two lines will display */
+  overflow: hidden;
   font-family: monospace;
   font-size: 20px;
   text-align: center;
@@ -93,7 +97,7 @@ body {
   position: relative;
   width: 100%;
 }
-#imgSize {
+.imgSize {
   width: 200px;
   position: relative;
   bottom: 40px;

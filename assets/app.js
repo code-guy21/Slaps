@@ -66,6 +66,7 @@ $(document).ready(function () {
 
   // Ticket Master
   function concertDetails() {
+
     $.ajax({
       url: "https://app.ticketmaster.com/discovery/v2/events.json?",
       method: "GET",
@@ -76,28 +77,36 @@ $(document).ready(function () {
       },
     }).then((response) => {
       let concerts = response._embedded.events;
+      console.log(response)
 
       for (let i = 0; i < 5; i++) {
-        let imgDiv = $('<div class="col-2 m-4">');
+
+        let imgDiv = $("<div class='col-2 m-4'>");
 
         let eventTitle = $('<p id="eventTitle">').text(concerts[i].name);
-        let eventDate = $('<p id="eventDate">').text(
-          concerts[i].dates.start.localDate
-        );
+        let eventDate = $('<p id="eventDate">').text(concerts[i].dates.start.localDate);
         let concertsImage = $("<img id='eventImage'>");
 
-        concertsImage.attr({"src": concerts[i].images[5].url, id: "imgSize"});
-
+        concertsImage.attr({"src": concerts[i].images[5].url, class: "imgSize", 'data-url': concerts[i].url});
         imgDiv.append(eventTitle);
         imgDiv.append(eventDate);
         imgDiv.append(concertsImage);
 
-        console.log(imgDiv);
-
+        
         $("#eventDisplay").append(imgDiv);
       }
+
+      
     });
+    
   }
+
+      $(document.body).on('click', '.imgSize' ,function() {
+        let eventUrl = $(this).attr('data-url');
+
+        window.open(eventUrl, '_blank')
+      })
+
 
   concertDetails();
 
