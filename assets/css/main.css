@@ -109,7 +109,7 @@ body {
   position: relative;
   width: 100%;
 }
-#imgSize {
+.imgSize {
   width: 200px;
   position: relative;
   bottom: 40px;
