@@ -1,33 +1,40 @@
 $(document).ready(function () {
   let dirtySearch = window.location.search;
   const urlParams = new URLSearchParams(dirtySearch);
-  console.log(urlParams);
   console.log(urlParams.get("artistName"));
   let artist = urlParams.get("artistName");
   let song = urlParams.get("songName");
-  let token = location.hash.substring(1).split("&")[0].split("=")[1];
-  console.log(artist);
-  console.log(song);
-  console.log(token);
-  //const cleanSearch = dirtySearch.split("=")[1];
+
   getSong();
   function getSong() {
     $.ajax({
       type: "GET",
       url: "https://api.spotify.com/v1/search",
       headers: {
-        Authorization: "Bearer " + token,
+        Authorization: "Bearer " + sessionStorage.getItem("access_token"),
       },
       data: {
-        q: "metallica",
-        type: "artist",
+        q: song,
+        type: "track",
+        limit: 1,
       },
     }).then(function (resp) {
       console.log(resp);
+      let player = $("<iframe>");
+      player.attr({
+        src: "https://open.spotify.com/embed?uri=" + resp.tracks.items[0].uri,
+        width: "100%",
+        height: "100%",
+        frameborder: "0",
+        allowtransparency: true,
+        allow: "encrypted-media",
+      });
+
+      $(".a").append(player);
     });
   }
   //Youtube API
-  $.ajax({
+  /*$.ajax({
     type: "GET",
     url: "https://www.googleapis.com/youtube/v3/search",
     data: {
@@ -84,7 +91,7 @@ $(document).ready(function () {
     //   let searchResulsts = localStorage.getItem('songName')
 
     // }
-  });
+  });*/
 
   //MusixMatch API
   $.ajax({
