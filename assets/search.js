@@ -15,8 +15,6 @@ $(document).ready(function () {
       },
     }).then((response) => {
       displayResults(response.message.body.track_list);
-      console.log(response);
-      console.log(response.message.body);
     });
   }
 
@@ -30,29 +28,26 @@ $(document).ready(function () {
       });
 
       song.css("color", "white");
-      song.text(element.track.track_name + ' - ' + element.track.artist_name);
+      song.text(element.track.track_name + " - " + element.track.artist_name);
       $("#choices").append(song);
-      $("#searched").val('')
-      console.log(element);
+      $("#searched").val("");
     });
   }
   $("#songBtn").on("click", function () {
     let songSearched = $("#searched").val().trim();
     fetchResults({ q_track: songSearched });
-    $("#choices").html('')
+    $("#choices").html("");
   });
   $("#artistBtn").on("click", function () {
     let artistSearched = $("#searched").val().trim();
     fetchResults({ q_artist: artistSearched });
-    $("#choices").html('')
+    $("#choices").html("");
   });
 
   $(document).on("click", ".track", function () {
     let song = $(this);
     let name = song.attr("songName");
     let artist = song.attr("artistName");
-    console.log(name);
-    console.log(artist);
     location.assign("./main.html?artistName=" + artist + "&songName=" + name);
   });
 });
