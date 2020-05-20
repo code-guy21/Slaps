@@ -22,11 +22,14 @@ i {
   background: #1db954;
   width: 100%;
   margin-top: 10px;
+  padding: 20px;
+  font-size: 25px;
 }
 
 body {
   height: 100vh;
   background-image: url(../images/backgroundimage.png);
+  overflow-y: hidden;
 }
 
 main {
@@ -52,4 +55,9 @@ h1 {
 
 h2 {
   color: white;
+  font-family: monospace
+}
+
+#login:hover {
+  opacity: 70%;
 }
