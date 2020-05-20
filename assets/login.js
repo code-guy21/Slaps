@@ -14,6 +14,7 @@ $(document).ready(function () {
   };
 
   $("#login").click(function () {
+    event.preventDefault();
     window.open(base_url + $.param(params), "_self");
   });
 });
