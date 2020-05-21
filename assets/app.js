@@ -11,7 +11,7 @@ $(document).ready(function () {
       $(this).css("background-color", "#45505a");
     });
     document.body.classList.toggle("dark-mode");
-    }
+  }
 
   // Spotify
   function renderSong(song) {
@@ -49,16 +49,16 @@ $(document).ready(function () {
     concerts.forEach((concert) => {
       let imgDiv = $("<div class='col-2 m-4'>");
 
-      let eventTitle = $('<p id="eventTitle">').text(concert.name);
-      let eventDate = $('<p id="eventDate">').text(
+      let eventTitle = $('<p class="eventTitle">').text(concert.name);
+      let eventDate = $('<p class="eventDate">').text(
         concert.dates.start.localDate
       );
-      let concertsImage = $("<img id='eventImage'>");
+      let concertsImage = $("<img class='eventImage'>");
 
       concertsImage.attr({
         src: concert.images[5].url,
-        id: "concertImg",
-        class: "imgSize",
+
+        class: "imgSize concertImg",
         "data-url": concert.url,
       });
       imgDiv.append(eventTitle);
