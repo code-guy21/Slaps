@@ -1,46 +1,48 @@
 $(document).ready(function () {
   function fetchResults(search) {
     $.ajax({
-      url:
-        "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search",
-      method: "GET",
-      dataType: "json",
+      type: "GET",
+      url: "https://api.spotify.com/v1/search",
+      headers: {
+        Authorization: "Bearer " + sessionStorage.getItem("access_token"),
+      },
       data: {
-        apikey: "288eca28787dff862dc30619eec1d852",
-        q_artist_rating: "Desc",
-        s_track_rating: "Desc",
-        s_track_release_date: "Desc",
-        country: +1,
+        type: "track",
+        limit: 10,
         ...search,
       },
     }).then((response) => {
-      displayResults(response.message.body.track_list);
+      displayResults(response.tracks.items);
     });
   }
 
   function displayResults(tracks) {
+    console.log(tracks);
+
     tracks.forEach((element) => {
+      console.log(element);
       let song = $("<div id='trackListing'>");
       song.attr({
-        songName: element.track.track_name,
-        artistName: element.track.artist_name,
+        songName: element.name,
+        artistName: element.artists[0].name,
+        uri: element.uri,
         class: "track",
       });
 
       song.css("color", "white");
-      song.text(element.track.track_name + " - " + element.track.artist_name);
+      song.text(element.name + " - " + element.artists[0].name);
       $("#choices").append(song);
       $("#searched").val("");
     });
   }
   $("#songBtn").on("click", function () {
     let songSearched = $("#searched").val().trim();
-    fetchResults({ q_track: songSearched });
+    fetchResults({ q: songSearched, type: "track" });
     $("#choices").html("");
   });
   $("#artistBtn").on("click", function () {
     let artistSearched = $("#searched").val().trim();
-    fetchResults({ q_artist: artistSearched });
+    fetchResults({ q: "artist:" + artistSearched, type: "track" });
     $("#choices").html("");
   });
 
@@ -48,6 +50,9 @@ $(document).ready(function () {
     let song = $(this);
     let name = song.attr("songName");
     let artist = song.attr("artistName");
-    location.assign("./main.html?artistName=" + artist + "&songName=" + name);
+    let uri = song.attr("uri");
+    location.assign(
+      "./main.html?artistName=" + artist + "&songName=" + name + "&uri=" + uri
+    );
   });
 });
