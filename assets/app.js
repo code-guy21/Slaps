@@ -2,28 +2,12 @@ $(document).ready(function () {
   const urlParams = new URLSearchParams(window.location.search);
   let artist = urlParams.get("artistName");
   let song = urlParams.get("songName");
+  let uri = urlParams.get("uri");
 
   // Spotify
-  function fetchSong() {
-    $.ajax({
-      type: "GET",
-      url: "https://api.spotify.com/v1/search",
-      headers: {
-        Authorization: "Bearer " + sessionStorage.getItem("access_token"),
-      },
-      data: {
-        q: song,
-        type: "track",
-        limit: 1,
-      },
-    }).then(function (resp) {
-      renderSong(resp.tracks.items[0]);
-    });
-  }
-
   function renderSong(song) {
     let player = $("<iframe>").attr({
-      src: "https://open.spotify.com/embed?uri=" + song.uri,
+      src: "https://open.spotify.com/embed?uri=" + uri,
       width: "100%",
       height: "100%",
       frameborder: "0",
@@ -35,15 +19,17 @@ $(document).ready(function () {
   }
 
   // Ticket Master
+
   function fetchConcerts() {
     $.ajax({
       url: "https://app.ticketmaster.com/discovery/v2/events.json?",
       method: "GET",
       dataType: "json",
-      size: 5,
       data: {
+        size: 5,
         apikey: "AMlA6dh5sfwIqUjSn26jTvgrF6xaX92f",
         keyword: artist,
+        sort: "name,desc",
       },
     }).then((response) => {
       renderConcerts(response._embedded.events);
@@ -75,6 +61,9 @@ $(document).ready(function () {
   }
 
   //MusixMatch API
+  // alexis key: "288eca28787dff862dc30619eec1d852"
+  // pete key  : "b0f551e56682404247337bb3ace03a29"
+
   function fetchLyrics() {
     $.ajax({
       url:
@@ -103,7 +92,7 @@ $(document).ready(function () {
     window.open(eventUrl, "_blank");
   });
 
-  fetchSong();
+  renderSong();
   fetchLyrics();
   fetchConcerts();
 });

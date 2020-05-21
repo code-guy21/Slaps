@@ -25,6 +25,7 @@ $(document).ready(function () {
       song.attr({
         songName: element.name,
         artistName: element.artists[0].name,
+        uri: element.uri,
         class: "track",
       });
 
@@ -49,6 +50,9 @@ $(document).ready(function () {
     let song = $(this);
     let name = song.attr("songName");
     let artist = song.attr("artistName");
-    location.assign("./main.html?artistName=" + artist + "&songName=" + name);
+    let uri = song.attr("uri");
+    location.assign(
+      "./main.html?artistName=" + artist + "&songName=" + name + "&uri=" + uri
+    );
   });
 });
