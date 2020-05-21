@@ -3,6 +3,15 @@ $(document).ready(function () {
   let artist = urlParams.get("artistName");
   let song = urlParams.get("songName");
 
+  // light/darkmode
+  document.getElementById("switch").addEventListener("click", themeToggle);
+  function themeToggle() {
+    $(".box").each(function (box) {
+      $(this).css("background-color", "#45505a");
+    });
+    document.body.classList.toggle("dark-mode");
+    }
+
   // Spotify
   function fetchSong() {
     $.ajax({
