@@ -35,15 +35,17 @@ $(document).ready(function () {
   }
 
   // Ticket Master
+  
   function fetchConcerts() {
     $.ajax({
       url: "https://app.ticketmaster.com/discovery/v2/events.json?",
       method: "GET",
       dataType: "json",
-      size: 5,
       data: {
+        size: 5,
         apikey: "AMlA6dh5sfwIqUjSn26jTvgrF6xaX92f",
         keyword: artist,
+        sort: 'name,desc'
       },
     }).then((response) => {
       renderConcerts(response._embedded.events);
@@ -75,6 +77,9 @@ $(document).ready(function () {
   }
 
   //MusixMatch API
+  // alexis key: "288eca28787dff862dc30619eec1d852"
+  // pete key  : "b0f551e56682404247337bb3ace03a29"
+
   function fetchLyrics() {
     $.ajax({
       url:
