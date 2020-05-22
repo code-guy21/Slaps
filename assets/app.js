@@ -4,6 +4,15 @@ $(document).ready(function () {
   let song = urlParams.get("songName");
   let uri = urlParams.get("uri");
 
+  // light/darkmode
+  document.getElementById("switch").addEventListener("click", themeToggle);
+  function themeToggle() {
+    $(".box").each(function (box) {
+      $(this).css("background-color", "#45505a");
+    });
+    document.body.classList.toggle("dark-mode");
+    }
+
   // Spotify
   function renderSong(song) {
     let player = $("<iframe>").attr({

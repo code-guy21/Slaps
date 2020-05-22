@@ -9,9 +9,11 @@ body {
   background-image: url(../images/backgroundimage.png);
 }
 
-.navbar {
-  margin-left: 10px;
-  margin-right: 650px;
+.dark-mode{
+  background-image: url(../images/lightMode_img.jpg);
+}
+.dark-mode-boxes{
+  background-color: #45505a;
 }
 
 .wrapper {
@@ -57,10 +59,16 @@ body {
   position: absolute;
   top: 0em;
   background-color: #241c1c;
-  width: 100%;
+  margin-left: 10px;
+  width: 1900px;
   height: 75px;
   grid-template-columns: 2fr 1fr;
 }
+.btn{
+  background-color: #c0d8ee;
+  height: 100%;
+}
+
 
 .footer {
   font-family: "metalLord";
@@ -110,6 +118,7 @@ body {
   display: inline;
   padding-top: 30px;
 }
+
 
 #concertImg:hover {
   cursor: pointer;
@@ -174,3 +183,5 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+=======
+
