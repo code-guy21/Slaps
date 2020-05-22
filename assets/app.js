@@ -42,12 +42,13 @@ $(document).ready(function () {
       },
     }).then((response) => {
       renderConcerts(response._embedded.events);
+      console.log(response)
     });
   }
 
   function renderConcerts(concerts) {
     concerts.forEach((concert) => {
-      let eventCountry = concert._embedded.venues[0].city.name + ", " + concert._embedded.venues[0].country.countryCode;
+      let eventCountry = concert._embedded.venues[0].country.countryCode;
       let imgDiv = $("<div class='col-2 m-4'>");
 
       let eventTitle = $('<p id="eventTitle">').text(concert._embedded.venues[0].name);
