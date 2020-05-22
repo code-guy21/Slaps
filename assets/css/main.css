@@ -79,11 +79,18 @@ body {
   bottom: 0em;
 }
 
-#eventTitle,
-#eventDate {
-  margin-left: 70px;
+#eventTitle {
   line-height: 1em;
-  height: 3em;       /* height is 2x line-height, so two lines will display */
+  height: 3em;       
+  overflow: hidden;
+  font-family: monospace;
+  font-size: 20px;
+  text-align: center;
+}
+#eventDate,
+#eventLocation {
+  line-height: 1em;
+  height: 1em;       
   overflow: hidden;
   font-family: monospace;
   font-size: 20px;
@@ -111,3 +118,70 @@ body {
   display: inline;
   padding-top: 30px;
 }
+
+
+#concertImg:hover {
+  cursor: pointer;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 68px;
+  width: 80px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #ffffff;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #241c1c;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #fdfdfd;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(525px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+=======
+

@@ -42,6 +42,7 @@ $(document).ready(function () {
       },
     }).then((response) => {
       renderConcerts(response._embedded.events);
+      console.log(response)
     });
   }
 
@@ -49,10 +50,11 @@ $(document).ready(function () {
     concerts.forEach((concert) => {
       let imgDiv = $("<div class='col-2 m-4'>");
 
-      let eventTitle = $('<p id="eventTitle">').text(concert.name);
+      let eventTitle = $('<p id="eventTitle">').text(concert._embedded.venues[0].name);
       let eventDate = $('<p id="eventDate">').text(
         concert.dates.start.localDate
       );
+      let eventLocation = $('<p id="eventLocation">').text(concert._embedded.venues[0].city.name + ", " + concert._embedded.venues[0].state.stateCode)
       let concertsImage = $("<img id='eventImage'>");
 
       concertsImage.attr({
@@ -63,6 +65,7 @@ $(document).ready(function () {
       });
       imgDiv.append(eventTitle);
       imgDiv.append(eventDate);
+      imgDiv.append(eventLocation);
       imgDiv.append(concertsImage);
 
       $("#eventDisplay").append(imgDiv);
