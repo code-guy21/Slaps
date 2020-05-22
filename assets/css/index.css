@@ -1,0 +1,69 @@
+@font-face {
+  font-family: "metalLord";
+  src: url(../fonts/metal_lord.ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+
+form {
+  text-align: center;
+  width: 30%;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+i {
+  padding: 3px;
+}
+
+#login {
+  color: white;
+  background: #1db954;
+  width: 100%;
+  margin-top: 10px;
+  padding: 20px;
+  font-size: 25px;
+}
+
+body {
+  height: 100vh;
+  background-image: url(../images/backgroundimage.png);
+  overflow-y: hidden;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+h1 {
+  color: tomato;
+  font-family: "metalLord";
+  font-size: 90px;
+}
+
+h2 {
+  color: white;
+  font-family: monospace;
+}
+
+#login:hover {
+  opacity: 70%;
+}
+
+@media screen and (max-width: 950px) {
+  form {
+    width: 90%;
+  }
+}

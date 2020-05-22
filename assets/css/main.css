@@ -9,9 +9,11 @@ body {
   background-image: url(../images/backgroundimage.png);
 }
 
-.navbar {
-  margin-left: 10px;
-  margin-right: 650px;
+.dark-mode{
+  background-image: url(../images/lightMode_img.jpg);
+}
+.dark-mode-boxes{
+  background-color: #45505a;
 }
 
 .wrapper {
@@ -56,24 +58,17 @@ body {
   display: grid;
   position: absolute;
   top: 0em;
-  background-color: #eb3c34;
-  width: 100%;
+  background-color: #241c1c;
+  margin-left: 10px;
+  width: 1900px;
   height: 75px;
   grid-template-columns: 2fr 1fr;
 }
-
-.search {
-  margin-top: 15px;
-  margin-left: 20px;
-  margin-right: 15px;
-  grid-column: 1 / 2;
+.btn{
+  background-color: #c0d8ee;
+  height: 100%;
 }
 
-.searchbtn {
-  margin-top: 10px;
-  margin-right: 650px;
-  grid-column: 2;
-}
 
 .footer {
   font-family: "metalLord";
@@ -86,6 +81,10 @@ body {
 
 #eventTitle,
 #eventDate {
+  margin-left: 70px;
+  line-height: 1em;
+  height: 3em;       /* height is 2x line-height, so two lines will display */
+  overflow: hidden;
   font-family: monospace;
   font-size: 20px;
   text-align: center;
@@ -106,11 +105,9 @@ body {
   position: relative;
   width: 100%;
 }
-#imgSize {
-  width: 200px;
-  position: relative;
+#concertImg {
+  height: 160px;
   bottom: 40px;
   display: inline;
   padding-top: 30px;
 }
-

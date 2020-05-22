@@ -1,109 +1,79 @@
 $(document).ready(function () {
-  let dirtySearch = window.location.search;
-  const urlParams = new URLSearchParams(dirtySearch);
+  const urlParams = new URLSearchParams(window.location.search);
   let artist = urlParams.get("artistName");
   let song = urlParams.get("songName");
+  let uri = urlParams.get("uri");
 
-  //Youtube API
-  $.ajax({
-    type: "GET",
-    url: "https://www.googleapis.com/youtube/v3/search",
-    data: {
-      key: "AIzaSyCFonS58Mi9FXxIvqe0p4YY1Rf8HVhcAIg",
-      q: song,
-      part: "snippet",
-      maxResults: 10,
-      type: "video",
-      videoEmbeddable: true,
-    },
-  }).then((response) => {
-    console.log(response);
-
-    // 3. This function creates an <iframe> (and YouTube player)
-    //    after the API code downloads.
-    var player;
-    onYouTubeIframeAPIReady();
-    function onYouTubeIframeAPIReady() {
-      console.log("in the youtube ready callback");
-      player = new YT.Player("player", {
-        height: "390",
-        width: "640",
-        videoId: response.items[0].id.videoId,
-        events: {
-          onReady: onPlayerReady,
-          onStateChange: onPlayerStateChange,
-        },
-      });
+  // light/darkmode
+  document.getElementById("switch").addEventListener("click", themeToggle);
+  function themeToggle() {
+    $(".box").each(function (box) {
+      $(this).css("background-color", "#45505a");
+    });
+    document.body.classList.toggle("dark-mode");
     }
 
-    // 4. The API will call this function when the video player is ready.
-    function onPlayerReady(event) {
-      event.target.playVideo();
-    }
+  // Spotify
+  function renderSong(song) {
+    let player = $("<iframe>").attr({
+      src: "https://open.spotify.com/embed?uri=" + uri,
+      width: "100%",
+      height: "100%",
+      frameborder: "0",
+      allowtransparency: true,
+      allow: "encrypted-media",
+    });
 
-    // 5. The API calls this function when the player's state changes.
-    //    The function indicates that when playing a video (state=1),
-    //    the player should play for six seconds and then stop.
-    var done = false;
-    function onPlayerStateChange(event) {
-      if (event.data == YT.PlayerState.PLAYING && !done) {
-        setTimeout(stopVideo, 6000);
-        done = true;
-      }
-    }
-    function stopVideo() {
-      player.stopVideo();
-    }
-
-    //write a function to show 10 video results from youtube API on
-
-    //write a function to show video results from youtube API
-    // function displayvideo() {
-    //   let searchResulsts = localStorage.getItem('songName')
-
-    // }
-  });
+    $(".a").append(player);
+  }
 
   // Ticket Master
-  function concertDetails() {
+
+  function fetchConcerts() {
     $.ajax({
       url: "https://app.ticketmaster.com/discovery/v2/events.json?",
       method: "GET",
       dataType: "json",
       data: {
+        size: 5,
         apikey: "AMlA6dh5sfwIqUjSn26jTvgrF6xaX92f",
         keyword: artist,
+        sort: "name,desc",
       },
     }).then((response) => {
-      let concerts = response._embedded.events;
-
-      for (let i = 0; i < 5; i++) {
-        let imgDiv = $('<div class="col-2 m-4">');
-
-        let eventTitle = $('<p id="eventTitle">').text(concerts[i].name);
-        let eventDate = $('<p id="eventDate">').text(
-          concerts[i].dates.start.localDate
-        );
-        let concertsImage = $("<img id='eventImage'>");
-
-        concertsImage.attr({"src": concerts[i].images[5].url, id: "imgSize"});
-
-        imgDiv.append(eventTitle);
-        imgDiv.append(eventDate);
-        imgDiv.append(concertsImage);
-
-        console.log(imgDiv);
-
-        $("#eventDisplay").append(imgDiv);
-      }
+      renderConcerts(response._embedded.events);
     });
   }
 
-  concertDetails();
+  function renderConcerts(concerts) {
+    concerts.forEach((concert) => {
+      let imgDiv = $("<div class='col-2 m-4'>");
 
-  //Fetch Lyrics
+      let eventTitle = $('<p id="eventTitle">').text(concert.name);
+      let eventDate = $('<p id="eventDate">').text(
+        concert.dates.start.localDate
+      );
+      let concertsImage = $("<img id='eventImage'>");
 
-  function fetchLyrics(song, artist) {
+      concertsImage.attr({
+        src: concert.images[5].url,
+        id: "concertImg",
+        class: "imgSize",
+        "data-url": concert.url,
+      });
+      imgDiv.append(eventTitle);
+      imgDiv.append(eventDate);
+      imgDiv.append(concertsImage);
+
+      $("#eventDisplay").append(imgDiv);
+    });
+  }
+
+  //MusixMatch API
+  // alexis key: "288eca28787dff862dc30619eec1d852"
+  // pete key  : "b0f551e56682404247337bb3ace03a29"
+
+  function fetchLyrics() {
     $.ajax({
       url:
         "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/matcher.lyrics.get",
@@ -115,14 +85,23 @@ $(document).ready(function () {
         q_artist: artist,
       },
     }).then(function (response) {
-      processLyrics(response.message.body.lyrics.lyrics_body);
+      renderLyrics(response.message.body.lyrics.lyrics_body);
     });
   }
 
-  const processLyrics = (lyrics) => {
+  const renderLyrics = (lyrics) => {
     $("#lyrics").css("height", $(".a").css("height"));
     $("#lyrics").text(lyrics.split("...")[0]);
   };
 
-  fetchLyrics(song, artist);
+  //Concert Links
+  $(document.body).on("click", ".imgSize", function () {
+    let eventUrl = $(this).attr("data-url");
+
+    window.open(eventUrl, "_blank");
+  });
+
+  renderSong();
+  fetchLyrics();
+  fetchConcerts();
 });
