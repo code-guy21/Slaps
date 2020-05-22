@@ -71,11 +71,18 @@ body {
   bottom: 0em;
 }
 
-#eventTitle,
-#eventDate {
-  margin-left: 70px;
+#eventTitle {
   line-height: 1em;
-  height: 3em;       /* height is 2x line-height, so two lines will display */
+  height: 3em;       
+  overflow: hidden;
+  font-family: monospace;
+  font-size: 20px;
+  text-align: center;
+}
+#eventDate,
+#eventLocation {
+  line-height: 1em;
+  height: 1em;       
   overflow: hidden;
   font-family: monospace;
   font-size: 20px;
@@ -102,6 +109,10 @@ body {
   bottom: 40px;
   display: inline;
   padding-top: 30px;
+}
+
+#concertImg:hover {
+  cursor: pointer;
 }
 
 .switch {
@@ -162,7 +173,4 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
-}
-#homeBtn {
-  
 }
