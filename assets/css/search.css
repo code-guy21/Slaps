@@ -45,12 +45,20 @@ form {
   margin-bottom: 10px;
 }
 
+#feedback {
+  visibility: hidden;
+  color: #dc3545;
+  width: 100%;
+  font-size: 80%;
+  text-align: left;
+  margin-top: 0.25rem;
+}
+
 #trackListing:hover {
   text-decoration: underline;
   opacity: 70%;
   cursor: pointer;
 }
-
 
 /* animation */
 .deconstructed {
@@ -58,10 +66,10 @@ form {
   margin: auto;
   height: 1.71em;
   color: transparent;
-  font-family: 'metalLord';
+  font-family: "metalLord";
   font-size: 100px;
   font-weight: 700;
-  letter-spacing: .1em;
+  letter-spacing: 0.1em;
   line-height: 2.03em;
 }
 
@@ -82,19 +90,39 @@ form {
 }
 
 .deconstructed > div:nth-child(2) {
-  -webkit-mask-image: linear-gradient(transparent 25%, black 25%, black 50%, transparent 50%);
-  mask-image: linear-gradient(transparent 25%, black 25%, black 50%, transparent 50%);
+  -webkit-mask-image: linear-gradient(
+    transparent 25%,
+    black 25%,
+    black 50%,
+    transparent 50%
+  );
+  mask-image: linear-gradient(
+    transparent 25%,
+    black 25%,
+    black 50%,
+    transparent 50%
+  );
   animation: deconstructed2 5s;
 }
 
 .deconstructed > div:nth-child(3) {
-   -webkit-mask-image: linear-gradient(transparent 50%, black 50%, black 75%, transparent 75%);
-  mask-image: linear-gradient(transparent 50%, black 50%, black 75%, transparent 75%);
+  -webkit-mask-image: linear-gradient(
+    transparent 50%,
+    black 50%,
+    black 75%,
+    transparent 75%
+  );
+  mask-image: linear-gradient(
+    transparent 50%,
+    black 50%,
+    black 75%,
+    transparent 75%
+  );
   animation: deconstructed3 5s;
 }
 
 .deconstructed > div:nth-child(4) {
-   -webkit-mask-image: linear-gradient(transparent 75%, black 75%);
+  -webkit-mask-image: linear-gradient(transparent 75%, black 75%);
   mask-image: linear-gradient(transparent 75%, black 75%);
   animation: deconstructed4 5s;
 }
