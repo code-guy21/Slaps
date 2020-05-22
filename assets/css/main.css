@@ -28,7 +28,7 @@ body {
 }
 
 .box {
-  background-color: #c0d8ee;
+  background-image: url(../images/backgroundimage.png);
   color: #fff;
   border-radius: 5px;
   padding: 20px;
@@ -58,15 +58,17 @@ body {
   display: grid;
   position: absolute;
   top: 0em;
-  background-color: #241c1c;
+  background-color: black;
   margin-left: 10px;
   width: 1900px;
   height: 75px;
   grid-template-columns: 2fr 1fr;
 }
 .btn{
-  background-color: #c0d8ee;
   height: 100%;
+}
+#homeBtn {
+  width: 175px;
 }
 
 
@@ -183,5 +185,6 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-=======
+
+
 
