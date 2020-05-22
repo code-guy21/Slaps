@@ -3,15 +3,27 @@ $(document).ready(function () {
   let artist = urlParams.get("artistName");
   let song = urlParams.get("songName");
   let uri = urlParams.get("uri");
+  
+  $("#lightMode").on("click", lightModeActive)
 
-  // light/darkmode
-  document.getElementById("switch").addEventListener("click", themeToggle);
-  function themeToggle() {
-    $(".box").each(function (box) {
-      $(this).css("background-color", "#45505a");
-    });
-    document.body.classList.toggle("dark-mode");
-    }
+  function lightModeActive() {
+    $("body").css("background-image", "url(./assets/images/lightMode_img.jpg)");
+    $(".header").css("background-color", "rgb(5, 197, 255)");
+    $(".box").css("background-image", "none");
+    $("#events").css("color", "black");
+    $(".footer").css("background-color", "rgb(5, 197, 255)")
+  }
+
+
+  $("#darkMode").on("click", darkModeActive)
+
+  function darkModeActive() {
+    $("body").css("background-image", "url(./assets/images/backgroundimage.png)");
+    $(".header").css("background-color", "black");
+    $(".box").css("background-image", "url(./assets/images/backgroundimage.png");
+    $("#events").css("color", "white");
+    $(".footer").css("background-color", "red")
+  }
 
   // Spotify
   function renderSong(song) {

@@ -64,11 +64,17 @@ body {
   height: 75px;
   grid-template-columns: 2fr 1fr;
 }
-.btn{
-  height: 100%;
-}
+
 #homeBtn {
   width: 175px;
+  height: 100%;
+}
+
+.btn-group {
+  position: absolute;
+  right: 20px;
+  top: 25px;
+  
 }
 
 

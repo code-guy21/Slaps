@@ -35,7 +35,14 @@
         <a id="homeBtn" href="search.html">
           <button type="button" id="homeBtn" class="btn btn-outline-danger">Home</button>
         </a>
-        <button type="button" id="switch" class="btn  btn-outline-danger">Light mode</button>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-secondary">
+            <input type="radio" name="options" id="lightMode" checked> Light
+          </label>
+          <label class="btn btn-secondary">
+            <input type="radio" name="options" id="darkMode"> Dark
+          </label>
+        </div>
       </div>
     </header>
 
