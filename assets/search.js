@@ -32,15 +32,39 @@ $(document).ready(function () {
       $("#searched").val("");
     });
   }
+
+  function validate(term) {
+    if (term.length === 0) {
+      $("#feedback").css("visibility", "visible");
+      $("#searched").addClass("is-invalid");
+      return false;
+    } else {
+      $("#feedback").css("visibility", "hidden");
+      $("#searched").removeClass("is-invalid");
+      $("#searched").addClass("is-valid");
+      return true;
+    }
+  }
+
   $("#songBtn").on("click", function () {
     let songSearched = $("#searched").val().trim();
-    fetchResults({ q: songSearched });
-    $("#choices").html("");
+    if (validate(songSearched)) {
+      fetchResults({ q: songSearched });
+      $("#choices").html("");
+    }
   });
   $("#artistBtn").on("click", function () {
     let artistSearched = $("#searched").val().trim();
-    fetchResults({ q: "artist:" + artistSearched });
-    $("#choices").html("");
+    if (validate(artistSearched)) {
+      fetchResults({ q: "artist:" + artistSearched });
+      $("#choices").html("");
+    }
+  });
+
+  $("form").submit(function (e) {
+    e.preventDefault();
+    $("#feedback").css("visibility", "visible");
+    $("#searched").addClass("is-invalid");
   });
 
   $(document).on("click", ".track", function () {
