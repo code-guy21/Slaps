@@ -28,7 +28,7 @@ body {
 }
 
 .box {
-  background-color: #c0d8ee;
+  
   color: #fff;
   border-radius: 5px;
   padding: 20px;
@@ -58,14 +58,14 @@ body {
   display: grid;
   position: absolute;
   top: 0em;
-  background-color: #241c1c;
+  background-color: rgb(224, 18, 18);
   margin-left: 10px;
   width: 1900px;
   height: 75px;
   grid-template-columns: 2fr 1fr;
 }
 .btn{
-  background-color: #c0d8ee;
+  background-color: black;
   height: 100%;
 }
 
@@ -110,4 +110,8 @@ body {
   bottom: 40px;
   display: inline;
   padding-top: 30px;
+}
+#homeBtn {
+  width: 150px;
+  background-color: black;
 }
