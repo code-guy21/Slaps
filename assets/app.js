@@ -42,21 +42,24 @@ $(document).ready(function () {
       },
     }).then((response) => {
       renderConcerts(response._embedded.events);
-      console.log(response)
     });
   }
 
   function renderConcerts(concerts) {
     concerts.forEach((concert) => {
+      let eventCountry = concert._embedded.venues[0].city.name + ", " + concert._embedded.venues[0].country.countryCode;
       let imgDiv = $("<div class='col-2 m-4'>");
 
       let eventTitle = $('<p id="eventTitle">').text(concert._embedded.venues[0].name);
       let eventDate = $('<p id="eventDate">').text(
         concert.dates.start.localDate
       );
-      let eventLocation = $('<p id="eventLocation">').text(concert._embedded.venues[0].city.name + ", " + concert._embedded.venues[0].state.stateCode)
-      let concertsImage = $("<img id='eventImage'>");
 
+      let eventLocation = $('<p id="eventLocation">').text(concert._embedded.venues[0].city.name + ", " + concert._embedded.venues[0].state.stateCode)
+      let eventLocationInt = $('<p id="eventLocation">').text(concert._embedded.venues[0].city.name + ", " + concert._embedded.venues[0].country.countryCode)
+
+      let concertsImage = $("<img id='eventImage'>");
+      
       concertsImage.attr({
         src: concert.images[5].url,
         id: "concertImg",
@@ -65,13 +68,19 @@ $(document).ready(function () {
       });
       imgDiv.append(eventTitle);
       imgDiv.append(eventDate);
-      imgDiv.append(eventLocation);
-      imgDiv.append(concertsImage);
 
+      if (eventCountry === "US") {
+        imgDiv.append(eventLocation);        
+      } else {
+        imgDiv.append(eventLocationInt)
+      }
+
+      imgDiv.append(concertsImage);
+      
       $("#eventDisplay").append(imgDiv);
     });
   }
-
+  
   //MusixMatch API
   // alexis key: "288eca28787dff862dc30619eec1d852"
   // pete key  : "b0f551e56682404247337bb3ace03a29"
