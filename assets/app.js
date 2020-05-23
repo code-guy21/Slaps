@@ -55,6 +55,7 @@ $(document).ready(function () {
       },
     }).then((response) => {
       renderConcerts(response._embedded.events);
+      console.l
     });
   }
 
@@ -70,16 +71,24 @@ $(document).ready(function () {
         concert.dates.start.localDate
       );
 
-      let eventLocation = $('<p id="eventLocation">').text(
-        concert._embedded.venues[0].city.name +
-          ", " +
-          concert._embedded.venues[0].state.stateCode
-      );
-      let eventLocationInt = $('<p id="eventLocation">').text(
-        concert._embedded.venues[0].city.name +
-          ", " +
-          concert._embedded.venues[0].country.countryCode
-      );
+      let eventLocation 
+      if (concert._embedded.venues[0].state) {
+
+        eventLocation = $('<p id="eventLocation">').text(
+          concert._embedded.venues[0].city.name +
+            ", " +
+            concert._embedded.venues[0].state.stateCode
+        );
+
+      } else {
+
+        eventLocation = $('<p id="eventLocation">').text(
+          concert._embedded.venues[0].city.name +
+            ", " +
+            concert._embedded.venues[0].country.countryCode
+        );
+
+      }
 
       let concertsImage = $("<img id='eventImage'>");
 
@@ -91,13 +100,7 @@ $(document).ready(function () {
       });
       imgDiv.append(eventTitle);
       imgDiv.append(eventDate);
-
-      if (eventCountry === "US") {
-        imgDiv.append(eventLocation);
-      } else {
-        imgDiv.append(eventLocationInt);
-      }
-
+      imgDiv.append(eventLocation);
       imgDiv.append(concertsImage);
 
       $("#eventDisplay").append(imgDiv);
