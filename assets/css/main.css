@@ -50,6 +50,7 @@ body {
 
 .d {
   grid-row: 7 / 9;
+
 }
 
 .header {
@@ -102,6 +103,7 @@ body {
   overflow-x: auto;
   font-size: 25px;
 }
+
 #copyright {
   position: relative;
   width: 100%;
