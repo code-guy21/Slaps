@@ -1,10 +1,11 @@
 $(document).ready(function () {
+  //Parse search data from URL
   const urlParams = new URLSearchParams(window.location.search);
   let artist = urlParams.get("artistName");
   let song = urlParams.get("songName");
   let uri = urlParams.get("uri");
-  
-  $("#lightMode").on("click", lightModeActive)
+
+  $("#lightMode").on("click", lightModeActive);
 
   function lightModeActive() {
     $("body").css("background-image", "url(./assets/images/lightMode.png)");
@@ -15,8 +16,7 @@ $(document).ready(function () {
     $(".footer").css("border-bottom-color", "rgb(116, 114, 114)")
   }
 
-
-  $("#darkMode").on("click", darkModeActive)
+  $("#darkMode").on("click", darkModeActive);
 
   function darkModeActive() {
     $("body").css("background-image", "url(./assets/images/darkMode.png)");
@@ -42,7 +42,6 @@ $(document).ready(function () {
   }
 
   // Ticket Master
-
   function fetchConcerts() {
     $.ajax({
       url: "https://app.ticketmaster.com/discovery/v2/events.json?",
@@ -56,7 +55,6 @@ $(document).ready(function () {
       },
     }).then((response) => {
       renderConcerts(response._embedded.events);
-      console.log(response)
     });
   }
 
@@ -65,16 +63,26 @@ $(document).ready(function () {
       let eventCountry = concert._embedded.venues[0].country.countryCode;
       let imgDiv = $("<div class='col-2 m-4'>");
 
-      let eventTitle = $('<p id="eventTitle">').text(concert._embedded.venues[0].name);
+      let eventTitle = $('<p id="eventTitle">').text(
+        concert._embedded.venues[0].name
+      );
       let eventDate = $('<p id="eventDate">').text(
         concert.dates.start.localDate
       );
 
-      let eventLocation = $('<p id="eventLocation">').text(concert._embedded.venues[0].city.name + ", " + concert._embedded.venues[0].state.stateCode)
-      let eventLocationInt = $('<p id="eventLocation">').text(concert._embedded.venues[0].city.name + ", " + concert._embedded.venues[0].country.countryCode)
+      let eventLocation = $('<p id="eventLocation">').text(
+        concert._embedded.venues[0].city.name +
+          ", " +
+          concert._embedded.venues[0].state.stateCode
+      );
+      let eventLocationInt = $('<p id="eventLocation">').text(
+        concert._embedded.venues[0].city.name +
+          ", " +
+          concert._embedded.venues[0].country.countryCode
+      );
 
       let concertsImage = $("<img id='eventImage'>");
-      
+
       concertsImage.attr({
         src: concert.images[5].url,
         id: "concertImg",
@@ -85,17 +93,17 @@ $(document).ready(function () {
       imgDiv.append(eventDate);
 
       if (eventCountry === "US") {
-        imgDiv.append(eventLocation);        
+        imgDiv.append(eventLocation);
       } else {
-        imgDiv.append(eventLocationInt)
+        imgDiv.append(eventLocationInt);
       }
 
       imgDiv.append(concertsImage);
-      
+
       $("#eventDisplay").append(imgDiv);
     });
   }
-  
+
   //MusixMatch API
   // alexis key: "288eca28787dff862dc30619eec1d852"
   // pete key  : "b0f551e56682404247337bb3ace03a29"
@@ -107,13 +115,21 @@ $(document).ready(function () {
       method: "GET",
       dataType: "json",
       data: {
-        apikey: "288eca28787dff862dc30619eec1d852",
+        apikey: "b0f551e56682404247337bb3ace03a29",
         q_track: song,
         q_artist: artist,
       },
-    }).then(function (response) {
-      renderLyrics(response.message.body.lyrics.lyrics_body);
-    });
+    })
+      .then(function (response) {
+        if (!response.message.body) {
+          rickRoll("lyrics");
+        } else {
+          renderLyrics(response.message.body.lyrics.lyrics_body);
+        }
+      })
+      .catch(function () {
+        rickRoll("#lyrics");
+      });
   }
 
   const renderLyrics = (lyrics) => {
@@ -121,13 +137,31 @@ $(document).ready(function () {
     $("#lyrics").text(lyrics.split("...")[0]);
   };
 
-  //Concert Links
+  //Concert Event Listener
   $(document.body).on("click", ".imgSize", function () {
     let eventUrl = $(this).attr("data-url");
 
     window.open(eventUrl, "_blank");
   });
 
+  function rickRoll(section) {
+    //create element
+    let container = $("<div>");
+    let rick = $("<img>");
+
+    //add attributes
+    rick.attr({
+      src: "../assets/images/rickroll.gif",
+    });
+
+    //append to page
+    container
+      .append(rick)
+      .append($("<div>...no results, try again</div>").css("color", "white"));
+    $(section).append(container);
+  }
+
+  //load data
   renderSong();
   fetchLyrics();
   fetchConcerts();
