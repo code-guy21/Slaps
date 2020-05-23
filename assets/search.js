@@ -1,4 +1,26 @@
 $(document).ready(function () {
+  
+  let placeholderPuns = [
+    "For Whom The Mouse Clicks...",
+    "Click Me Like a Hurricane...",
+    "Kiki, Are You Clicking...?",
+    "Oooh I'm Blinded By The Click!",
+    "Click Me Baby One More Time...",
+    "Can I Click It?",
+    "Rock Your Browser!",
+    "We Will We Will Click You!",
+    "You Clicked Me All Night Long!",
+    "(Don't Fear) The Browser...",
+    "Clicking On A Prayer...",
+  ]
+
+  let randomPun = placeholderPuns[Math.floor(Math.random() * placeholderPuns.length)]
+  $("#searched").attr('placeholder', randomPun)
+
+  
+  
+  
+  
   function fetchResults(search) {
     $.ajax({
       type: "GET",
@@ -30,6 +52,7 @@ $(document).ready(function () {
       song.text(element.name + " - " + element.artists[0].name);
       $("#choices").append(song);
       $("#searched").val("");
+      $("#searched").attr('placeholder', randomPun)
     });
   }
 
