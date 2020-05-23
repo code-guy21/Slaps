@@ -8,27 +8,23 @@ $(document).ready(function () {
   $("#lightMode").on("click", lightModeActive);
 
   function lightModeActive() {
-    $("body").css("background-image", "url(./assets/images/lightMode_img.jpg)");
-    $(".header").css("background-color", "rgb(5, 197, 255)");
+    $("body").css("background-image", "url(./assets/images/lightMode.png)");
+    $(".header").css("background-color", "rgb(116, 114, 114)");
     $(".box").css("background-image", "none");
     $("#events").css("color", "black");
-    $(".footer").css("background-color", "rgb(5, 197, 255)");
+    $(".footer").css("background-color", "rgb(116, 114, 114)")
+    $(".footer").css("border-bottom-color", "rgb(116, 114, 114)")
   }
 
   $("#darkMode").on("click", darkModeActive);
 
   function darkModeActive() {
-    $("body").css(
-      "background-image",
-      "url(./assets/images/backgroundimage.png)"
-    );
-    $(".header").css("background-color", "black");
-    $(".box").css(
-      "background-image",
-      "url(./assets/images/backgroundimage.png"
-    );
+    $("body").css("background-image", "url(./assets/images/darkMode.png)");
+    $(".header").css("background-color", "rgb(48, 46, 46)");
+    $(".box").css("background-image", "none");
     $("#events").css("color", "white");
-    $(".footer").css("background-color", "red");
+    $(".footer").css("background-color", "rgb(235, 60, 52")
+    $(".footer").css("border-bottom-color", "rgb(235, 60, 52)")
   }
 
   // Spotify
