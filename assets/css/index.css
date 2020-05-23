@@ -5,27 +5,6 @@
   font-style: normal;
 }
 
-form {
-  text-align: center;
-  width: 30%;
-  border-radius: 5px;
-  padding: 10px;
-  margin-top: 20px;
-}
-
-i {
-  padding: 3px;
-}
-
-#login {
-  color: white;
-  background: #1db954;
-  width: 100%;
-  margin-top: 10px;
-  padding: 20px;
-  font-size: 25px;
-}
-
 body {
   height: 100vh;
   background-image: url(../images/backgroundimage.png);
@@ -47,6 +26,18 @@ header {
   margin: 20px;
 }
 
+form {
+  text-align: center;
+  width: 30%;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+i {
+  padding-right: 10px;
+}
+
 h1 {
   color: tomato;
   font-family: "metalLord";
@@ -56,6 +47,15 @@ h1 {
 h2 {
   color: white;
   font-family: monospace;
+}
+
+#login {
+  color: white;
+  background: #1db954;
+  width: 100%;
+  margin-top: 10px;
+  padding: 20px;
+  font-size: 25px;
 }
 
 #login:hover {
