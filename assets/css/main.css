@@ -48,7 +48,7 @@ body {
 
 .header {
   display: grid;
-  position: absolute;
+  position: fixed;
   top: 0em;
   background-color: rgb(48, 46, 46);
   width: 1900px;
@@ -60,6 +60,9 @@ body {
   color: tomato;
   font-size: 50px;
   font-family: "metalLord";
+  margin-left: 50%;
+  margin-top: 10px;
+  position: fixed;
 }
 #homeBtn {
   width: 175px;
@@ -68,7 +71,7 @@ body {
 }
 
 .btn-group {
-  position: absolute;
+  position: fixed;
   right: 20px;
   top: 25px;
   
