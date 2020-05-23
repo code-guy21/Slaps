@@ -14,7 +14,6 @@ $(document).ready(function () {
     $(".footer").css("background-color", "rgb(5, 197, 255)")
   }
 
-
   $("#darkMode").on("click", darkModeActive)
 
   function darkModeActive() {
@@ -130,3 +129,7 @@ $(document).ready(function () {
   fetchLyrics();
   fetchConcerts();
 });
+
+  fetchLyrics(song, artist);
+
+
