@@ -6,14 +6,7 @@
 }
 
 body {
-  background-image: url(../images/backgroundimage.png);
-}
-
-.dark-mode{
-  background-image: url(../images/lightMode_img.jpg);
-}
-.dark-mode-boxes{
-  background-color: #45505a;
+  background-image: url(../images/darkMode.png);
 }
 
 .wrapper {
@@ -28,7 +21,6 @@ body {
 }
 
 .box {
-  background-image: url(../images/backgroundimage.png);
   color: #fff;
   border-radius: 5px;
   padding: 20px;
@@ -58,22 +50,30 @@ body {
 
 .header {
   display: grid;
-  position: absolute;
+  position: fixed;
   top: 0em;
-  background-color: black;
-  margin-left: 10px;
+  background-color: rgb(48, 46, 46);
   width: 1900px;
   height: 75px;
-  grid-template-columns: 2fr 1fr;
+  border-bottom: 5px solid black;
+  grid-template-columns: 1fr 1fr;
 }
-
+.slaps{
+  color: tomato;
+  font-size: 50px;
+  font-family: "metalLord";
+  margin-left: 50%;
+  margin-top: 10px;
+  position: fixed;
+}
 #homeBtn {
   width: 175px;
   height: 100%;
+  margin-left: 15px;
 }
 
 .btn-group {
-  position: absolute;
+  position: fixed;
   right: 20px;
   top: 25px;
   
@@ -83,8 +83,10 @@ body {
 .footer {
   font-family: "metalLord";
   text-align: center;
-  background-color: #eb3c34;
+  background-color: rgb(235, 60, 52);
   width: 100%;
+  border-top: 5px solid black;
+  border-bottom: 10px solid rgb(235, 60, 52);
   position: absolute;
   bottom: 0em;
 }
