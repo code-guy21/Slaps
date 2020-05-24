@@ -12,8 +12,8 @@ $(document).ready(function () {
     $(".header").css("background-color", "rgb(116, 114, 114)");
     $(".box").css("background-image", "none");
     $("#events").css("color", "black");
-    $(".footer").css("background-color", "rgb(116, 114, 114)")
-    $(".footer").css("border-bottom-color", "rgb(116, 114, 114)")
+    $(".footer").css("background-color", "rgb(116, 114, 114)");
+    $(".footer").css("border-bottom-color", "rgb(116, 114, 114)");
   }
 
   $("#darkMode").on("click", darkModeActive);
@@ -23,8 +23,8 @@ $(document).ready(function () {
     $(".header").css("background-color", "rgb(48, 46, 46)");
     $(".box").css("background-image", "none");
     $("#events").css("color", "white");
-    $(".footer").css("background-color", "rgb(235, 60, 52")
-    $(".footer").css("border-bottom-color", "rgb(235, 60, 52)")
+    $(".footer").css("background-color", "rgb(235, 60, 52");
+    $(".footer").css("border-bottom-color", "rgb(235, 60, 52)");
   }
 
   // Spotify
@@ -55,7 +55,7 @@ $(document).ready(function () {
       },
     }).then((response) => {
       renderConcerts(response._embedded.events);
-      console.l
+      console.l;
     });
   }
 
@@ -71,23 +71,19 @@ $(document).ready(function () {
         concert.dates.start.localDate
       );
 
-      let eventLocation 
+      let eventLocation;
       if (concert._embedded.venues[0].state) {
-
         eventLocation = $('<p id="eventLocation">').text(
           concert._embedded.venues[0].city.name +
             ", " +
             concert._embedded.venues[0].state.stateCode
         );
-
       } else {
-
         eventLocation = $('<p id="eventLocation">').text(
           concert._embedded.venues[0].city.name +
             ", " +
             concert._embedded.venues[0].country.countryCode
         );
-
       }
 
       let concertsImage = $("<img id='eventImage'>");
@@ -113,8 +109,7 @@ $(document).ready(function () {
 
   function fetchLyrics() {
     $.ajax({
-      url:
-        "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/matcher.lyrics.get",
+      url: "https://api.musixmatch.com/ws/1.1/matcher.lyrics.get",
       method: "GET",
       dataType: "json",
       data: {
