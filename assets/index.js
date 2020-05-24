@@ -16,7 +16,7 @@ $(document).ready(function () {
   //Spotify credentials
   const params = {
     client_id: "7c62586e78b4439e82cba40ac1d1fc4f",
-    redirect_uri: "https://code-guy21.github.io/Slap/index.html",
+    redirect_uri: "https://code-guy21.github.io/Slaps/",
     response_type: "token",
   };
 
