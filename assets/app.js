@@ -55,7 +55,6 @@ $(document).ready(function () {
       },
     }).then((response) => {
       renderConcerts(response._embedded.events);
-      console.l;
     });
   }
 
