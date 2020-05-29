@@ -12,8 +12,8 @@ $(document).ready(function () {
     $(".header").css("background-color", "rgb(116, 114, 114)");
     $(".box").css("background-image", "none");
     $("#events").css("color", "black");
-    $(".footer").css("background-color", "rgb(116, 114, 114)")
-    $(".footer").css("border-bottom-color", "rgb(116, 114, 114)")
+    $(".footer").css("background-color", "rgb(116, 114, 114)");
+    $(".footer").css("border-bottom-color", "rgb(116, 114, 114)");
   }
 
   $("#darkMode").on("click", darkModeActive);
@@ -23,8 +23,8 @@ $(document).ready(function () {
     $(".header").css("background-color", "rgb(48, 46, 46)");
     $(".box").css("background-image", "none");
     $("#events").css("color", "white");
-    $(".footer").css("background-color", "rgb(235, 60, 52")
-    $(".footer").css("border-bottom-color", "rgb(235, 60, 52)")
+    $(".footer").css("background-color", "rgb(235, 60, 52");
+    $(".footer").css("border-bottom-color", "rgb(235, 60, 52)");
   }
 
   // Spotify
@@ -54,7 +54,7 @@ $(document).ready(function () {
         sort: "name,desc",
       },
     }).then((response) => {
-      renderConcerts(response._embedded.events);
+      //renderConcerts(response._embedded.events);
     });
   }
 
